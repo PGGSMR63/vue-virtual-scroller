@@ -117,6 +117,11 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    scrollTarget: {
+      type: [HTMLDocument, HTMLElement],
+      default: null,
+    },
   },
 
   emits: [
@@ -496,6 +501,9 @@ export default {
     },
 
     getListenerTarget () {
+      if (this.scrollTarget) {
+        return this.scrollTarget
+      }
       let target = getScrollParent(this.$el)
       // Fix global scroll target for Chrome and Safari
       if (window.document && (target === window.document.documentElement || target === window.document.body)) {
