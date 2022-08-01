@@ -216,7 +216,8 @@ export default {
   },
 
   render () {
-    return h(this.tag, this.$slots.default())
+    const slots = this.$slots.default && this.$slots.default()
+    return h(this.tag, slots)
   },
 }
 </script>
